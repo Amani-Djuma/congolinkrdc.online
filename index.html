@@ -51,24 +51,9 @@
 </head>
 <body class="bg-sand text-slate-800 antialiased overflow-x-hidden selection:bg-amberGold/25 selection:text-obsidian">
 
-  <!-- En-tête supérieure 100% fixe et statique -->
-  <div class="bg-obsidian text-slate-300 text-[11px] sm:text-xs border-b border-white/10">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 py-2.5 flex flex-col md:flex-row md:items-center md:justify-between gap-2">
-      <div class="flex items-center gap-2">
-        <span class="w-2 h-2 rounded-full bg-emerald-400 shrink-0"></span>
-        <span class="font-medium text-slate-200">CongoLinkRDC • Kinshasa • Matadi • Boma & International</span>
-      </div>
-      <div class="flex flex-wrap items-center gap-x-4 gap-y-1.5">
-        <span>Taux officiel : <strong class="text-amberLight">1 USD = 2 250 CDF</strong></span>
-        <span class="text-amberLight font-semibold whitespace-nowrap">📞 +243 000 000 000</span>
-        <span class="text-white font-medium break-all sm:break-normal">✉️ contact@congolinkrdc.online</span>
-      </div>
-    </div>
-  </div>
-
-  <!-- Navigation principale statique (ne suit plus le défilement) -->
+  <!-- Navigation principale statique -->
   <header class="bg-obsidian border-b border-white/10 text-white">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 py-3 flex items-center justify-between gap-3">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 py-3.5 flex items-center justify-between gap-3">
       <a href="#" class="flex items-center gap-2.5 sm:gap-3 min-w-0">
         <div class="w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-gradient-to-br from-amberGold to-amberLight text-obsidian font-extrabold flex items-center justify-center text-sm sm:text-base shadow-lg shadow-amberGold/20 shrink-0">
           CL
@@ -197,7 +182,7 @@
         <h2 class="text-2xl sm:text-4xl font-extrabold text-obsidian mt-1">Expédition Express & Cargo vers Kinshasa</h2>
       </div>
       <p class="text-slate-600 text-xs sm:text-sm max-w-md">
-        Tarifs tout compris (fret international + formalités douanières standards). Retrouvez nos coordonnées officielles en haut de page.
+        Tarifs tout compris (fret international + formalités douanières standards). Retrouvez nos coordonnées officielles en bas de page.
       </p>
     </div>
 
@@ -609,15 +594,24 @@
     </div>
   </section>
 
-  <!-- Footer -->
-  <footer class="bg-[#040811] text-slate-400 py-8 text-xs border-t border-white/10">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 flex flex-col sm:flex-row justify-between items-center text-center sm:text-left gap-3 sm:gap-4">
-      <div class="flex flex-col sm:flex-row items-center gap-1 sm:gap-2">
-        <strong class="text-white text-sm">CongoLinkRDC</strong>
-        <span>— Connecter • Échanger • Entreprendre</span>
+  <!-- Footer avec téléphone, email et taux officiel -->
+  <footer class="bg-[#040811] text-slate-300 py-10 text-xs border-t border-white/10">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 space-y-6">
+      <div class="flex flex-col md:flex-row justify-between items-center text-center md:text-left gap-4 pb-6 border-b border-white/10">
+        <div>
+          <strong class="text-white text-base">CongoLinkRDC</strong>
+          <p class="text-slate-400 mt-1">Connecter • Échanger • Entreprendre — Kinshasa • Matadi • Boma & International</p>
+        </div>
+
+        <div class="flex flex-col sm:flex-row items-center gap-3 sm:gap-6">
+          <span>Taux officiel : <strong class="text-amberLight">1 USD = 2 250 CDF</strong></span>
+          <a href="tel:+243000000000" class="text-amberLight font-semibold whitespace-nowrap">📞 +243 000 000 000</a>
+          <a href="mailto:contact@congolinkrdc.online" class="text-white font-medium break-all sm:break-normal">✉️ contact@congolinkrdc.online</a>
+        </div>
       </div>
-      <div>
-        Kinshasa • Matadi • Boma — République Démocratique du Congo • © 2026
+
+      <div class="text-center text-slate-500">
+        Kinshasa • Matadi • Boma — République Démocratique du Congo • © 2026 CongoLinkRDC
       </div>
     </div>
   </footer>
