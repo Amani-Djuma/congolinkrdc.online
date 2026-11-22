@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="fr" class="overflow-x-hidden">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -30,7 +30,7 @@
   <style>
     html { scroll-behavior: smooth; }
     .glass-dark {
-      background: rgba(12, 23, 43, 0.82);
+      background: rgba(12, 23, 43, 0.85);
       backdrop-filter: blur(14px);
       border: 1px solid rgba(255, 255, 255, 0.09);
     }
@@ -41,90 +41,108 @@
     .service-img-wrap img {
       transition: transform 0.55s cubic-bezier(0.22, 1, 0.36, 1);
     }
-    .service-card:hover .service-img-wrap img {
-      transform: scale(1.05);
+    @media (hover: hover) {
+      .service-card:hover .service-img-wrap img {
+        transform: scale(1.05);
+      }
     }
   </style>
 </head>
-<body class="bg-sand text-slate-800 antialiased selection:bg-amberGold/25 selection:text-obsidian">
+<body class="bg-sand text-slate-800 antialiased overflow-x-hidden selection:bg-amberGold/25 selection:text-obsidian">
 
-  <!-- En-tête supérieure avec numéro et email -->
-  <div class="bg-obsidian text-slate-300 text-xs border-b border-white/10">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 py-2.5 flex flex-wrap items-center justify-between gap-2">
+  <!-- En-tête supérieure STATIQUE (sans animation ni défilement) -->
+  <div class="bg-obsidian text-slate-300 text-[11px] sm:text-xs border-b border-white/10">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 py-2.5 flex flex-col md:flex-row md:items-center md:justify-between gap-2">
       <div class="flex items-center gap-2">
-        <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
-        <span>CongoLinkRDC • Kinshasa • Matadi • Boma & International</span>
+        <span class="w-2 h-2 rounded-full bg-emerald-400 shrink-0"></span>
+        <span class="font-medium text-slate-200">CongoLinkRDC • Kinshasa • Matadi • Boma & International</span>
       </div>
-      <div class="flex flex-wrap items-center gap-4 sm:gap-5">
+      <div class="flex flex-wrap items-center gap-x-4 gap-y-1.5">
         <span>Taux officiel : <strong class="text-amberLight">1 USD = 2 250 CDF</strong></span>
-        <span class="text-amberLight font-semibold select-all">📞 +243 000 000 000</span>
-        <span class="text-white font-medium select-all">✉️ contact@congolinkrdc.online</span>
+        <span class="text-amberLight font-semibold whitespace-nowrap">📞 +243 000 000 000</span>
+        <span class="text-white font-medium break-all sm:break-normal">✉️ contact@congolinkrdc.online</span>
       </div>
     </div>
   </div>
 
-  <!-- Navigation principale -->
+  <!-- Navigation principale responsive -->
   <header class="sticky top-0 z-40 bg-obsidian/95 backdrop-blur-md border-b border-white/10 text-white">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 py-3.5 flex items-center justify-between">
-      <a href="#" class="flex items-center gap-3">
-        <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-amberGold to-amberLight text-obsidian font-extrabold flex items-center justify-center text-base shadow-lg shadow-amberGold/20">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 py-3 flex items-center justify-between gap-3">
+      <a href="#" class="flex items-center gap-2.5 sm:gap-3 min-w-0">
+        <div class="w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-gradient-to-br from-amberGold to-amberLight text-obsidian font-extrabold flex items-center justify-center text-sm sm:text-base shadow-lg shadow-amberGold/20 shrink-0">
           CL
         </div>
-        <div class="leading-tight">
-          <span class="font-extrabold tracking-tight text-lg text-white">CongoLink</span><span class="font-extrabold text-amberGold text-lg">RDC</span>
-          <p class="text-[10px] uppercase tracking-widest text-slate-400">Connecter • Échanger • Entreprendre</p>
+        <div class="leading-tight truncate">
+          <span class="font-extrabold tracking-tight text-base sm:text-lg text-white">CongoLink</span><span class="font-extrabold text-amberGold text-base sm:text-lg">RDC</span>
+          <p class="text-[9px] sm:text-[10px] uppercase tracking-wider sm:tracking-widest text-slate-400 truncate">Connecter • Échanger • Entreprendre</p>
         </div>
       </a>
 
+      <!-- Navigation Desktop -->
       <nav class="hidden lg:flex items-center gap-8 text-sm font-medium text-slate-300">
         <a href="#tarifs" class="hover:text-amberLight transition">Tarifs Express & Cargo</a>
         <a href="#procedure-fret" class="hover:text-amberLight transition">Avant d'expédier</a>
         <a href="#sponsoring" class="hover:text-amberLight transition">Sponsoring & Prérequis</a>
       </nav>
 
-      <a href="#tarifs" class="px-5 py-2.5 rounded-xl bg-amberGold hover:bg-amberLight text-obsidian text-xs sm:text-sm font-bold transition shadow-md shadow-amberGold/20">
-        Voir les tarifs
-      </a>
+      <div class="flex items-center gap-2 shrink-0">
+        <a href="#tarifs" class="px-3.5 sm:px-5 py-2 sm:py-2.5 rounded-xl bg-amberGold hover:bg-amberLight text-obsidian text-xs sm:text-sm font-bold transition shadow-md shadow-amberGold/20">
+          Tarifs
+        </a>
+        <!-- Bouton Menu Mobile -->
+        <button id="mobile-menu-btn" type="button" aria-label="Ouvrir le menu" class="lg:hidden p-2 rounded-xl bg-white/10 hover:bg-white/15 text-white border border-white/10">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16"></path>
+          </svg>
+        </button>
+      </div>
+    </div>
+
+    <!-- Menu Mobile Déroulant -->
+    <div id="mobile-menu" class="hidden lg:hidden bg-midnight border-t border-white/10 px-4 py-4 space-y-2 text-sm font-medium text-slate-200">
+      <a href="#tarifs" class="block py-2 px-3 rounded-lg hover:bg-white/5 hover:text-amberLight">Tarifs Express & Cargo</a>
+      <a href="#procedure-fret" class="block py-2 px-3 rounded-lg hover:bg-white/5 hover:text-amberLight">Avant d'expédier</a>
+      <a href="#sponsoring" class="block py-2 px-3 rounded-lg hover:bg-white/5 hover:text-amberLight">Sponsoring & Prérequis</a>
     </div>
   </header>
 
   <!-- Hero Section -->
   <section class="relative bg-obsidian text-white overflow-hidden">
     <div class="absolute inset-0 bg-[radial-gradient(circle_at_top_right,_rgba(217,155,38,0.18),_transparent_52%)]"></div>
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 py-16 lg:py-24 relative z-10 grid lg:grid-cols-12 gap-12 items-center">
-      <div class="lg:col-span-7 space-y-6">
-        <div class="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full text-xs font-semibold bg-white/5 text-amberLight border border-amberGold/30">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 py-12 sm:py-16 lg:py-24 relative z-10 grid lg:grid-cols-12 gap-8 lg:gap-12 items-center">
+      <div class="lg:col-span-7 space-y-5 sm:space-y-6">
+        <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full text-[11px] sm:text-xs font-semibold bg-white/5 text-amberLight border border-amberGold/30">
           <span>Logistique Internationale & Parrainage d'Entreprises</span>
         </div>
 
-        <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold leading-[1.12] tracking-tight">
+        <h1 class="text-3xl sm:text-5xl lg:text-6xl font-extrabold leading-[1.15] tracking-tight">
           Express <span class="text-amberGold">&lt; 5 jours</span>, Cargo 45 jours & Sponsoring PME.
         </h1>
 
-        <p class="text-slate-300 text-base sm:text-lg leading-relaxed max-w-2xl">
+        <p class="text-slate-300 text-sm sm:text-base lg:text-lg leading-relaxed max-w-2xl">
           Consultez nos grilles tarifaires transparentes et toutes les conditions préalables pour vos marchandises entre
           <strong class="text-white">Kinshasa, Matadi, Boma</strong> et
           <strong class="text-white">la Chine, Dubaï, la Belgique, la France, les Philippines, Singapour, la Tunisie et le Maroc</strong>.
         </p>
 
         <!-- Badges destinations -->
-        <div class="flex flex-wrap gap-2 pt-1">
-          <span class="px-3 py-1.5 rounded-lg bg-amberGold text-obsidian text-xs font-bold">Kinshasa • Matadi • Boma</span>
-          <span class="px-3 py-1.5 rounded-lg bg-white/10 text-slate-200 text-xs font-medium border border-white/10">Chine</span>
-          <span class="px-3 py-1.5 rounded-lg bg-white/10 text-slate-200 text-xs font-medium border border-white/10">Dubaï</span>
-          <span class="px-3 py-1.5 rounded-lg bg-white/10 text-slate-200 text-xs font-medium border border-white/10">Belgique</span>
-          <span class="px-3 py-1.5 rounded-lg bg-white/10 text-slate-200 text-xs font-medium border border-white/10">France</span>
-          <span class="px-3 py-1.5 rounded-lg bg-white/10 text-slate-200 text-xs font-medium border border-white/10">Philippines</span>
-          <span class="px-3 py-1.5 rounded-lg bg-white/10 text-slate-200 text-xs font-medium border border-white/10">Singapour</span>
-          <span class="px-3 py-1.5 rounded-lg bg-white/10 text-slate-200 text-xs font-medium border border-white/10">Tunisie</span>
-          <span class="px-3 py-1.5 rounded-lg bg-white/10 text-slate-200 text-xs font-medium border border-white/10">Maroc</span>
+        <div class="flex flex-wrap gap-1.5 sm:gap-2 pt-1">
+          <span class="px-2.5 sm:px-3 py-1 sm:py-1.5 rounded-lg bg-amberGold text-obsidian text-[11px] sm:text-xs font-bold">Kinshasa • Matadi • Boma</span>
+          <span class="px-2.5 sm:px-3 py-1 sm:py-1.5 rounded-lg bg-white/10 text-slate-200 text-[11px] sm:text-xs font-medium border border-white/10">Chine</span>
+          <span class="px-2.5 sm:px-3 py-1 sm:py-1.5 rounded-lg bg-white/10 text-slate-200 text-[11px] sm:text-xs font-medium border border-white/10">Dubaï</span>
+          <span class="px-2.5 sm:px-3 py-1 sm:py-1.5 rounded-lg bg-white/10 text-slate-200 text-[11px] sm:text-xs font-medium border border-white/10">Belgique</span>
+          <span class="px-2.5 sm:px-3 py-1 sm:py-1.5 rounded-lg bg-white/10 text-slate-200 text-[11px] sm:text-xs font-medium border border-white/10">France</span>
+          <span class="px-2.5 sm:px-3 py-1 sm:py-1.5 rounded-lg bg-white/10 text-slate-200 text-[11px] sm:text-xs font-medium border border-white/10">Philippines</span>
+          <span class="px-2.5 sm:px-3 py-1 sm:py-1.5 rounded-lg bg-white/10 text-slate-200 text-[11px] sm:text-xs font-medium border border-white/10">Singapour</span>
+          <span class="px-2.5 sm:px-3 py-1 sm:py-1.5 rounded-lg bg-white/10 text-slate-200 text-[11px] sm:text-xs font-medium border border-white/10">Tunisie</span>
+          <span class="px-2.5 sm:px-3 py-1 sm:py-1.5 rounded-lg bg-white/10 text-slate-200 text-[11px] sm:text-xs font-medium border border-white/10">Maroc</span>
         </div>
 
-        <div class="flex flex-wrap gap-4 pt-3">
-          <a href="#tarifs" class="px-7 py-3.5 rounded-xl bg-amberGold hover:bg-amberLight text-obsidian text-sm font-extrabold transition shadow-lg shadow-amberGold/20">
+        <div class="flex flex-col sm:flex-row gap-3 sm:gap-4 pt-2">
+          <a href="#tarifs" class="w-full sm:w-auto text-center px-6 py-3.5 rounded-xl bg-amberGold hover:bg-amberLight text-obsidian text-sm font-extrabold transition shadow-lg shadow-amberGold/20">
             Consulter nos tarifs
           </a>
-          <a href="#sponsoring" class="px-7 py-3.5 rounded-xl bg-white/10 hover:bg-white/15 text-white border border-white/15 text-sm font-semibold transition">
+          <a href="#sponsoring" class="w-full sm:w-auto text-center px-6 py-3.5 rounded-xl bg-white/10 hover:bg-white/15 text-white border border-white/15 text-sm font-semibold transition">
             Programme Sponsoring
           </a>
         </div>
@@ -132,37 +150,37 @@
 
       <!-- Visuel & Chiffres clés -->
       <div class="lg:col-span-5">
-        <div class="glass-dark rounded-3xl p-4 shadow-2xl">
+        <div class="glass-dark rounded-3xl p-3.5 sm:p-4 shadow-2xl">
           <div class="relative rounded-2xl overflow-hidden">
             <img
               src="https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=1000&q=80"
               alt="Fret international et conteneurs"
-              class="w-full h-64 object-cover"
+              class="w-full h-52 sm:h-64 object-cover"
               onerror="this.src='https://images.unsplash.com/photo-1494412574643-ff11b0a5c1c3?auto=format&fit=crop&w=1000&q=80'"
             />
             <div class="absolute inset-0 bg-gradient-to-t from-obsidian via-transparent to-transparent"></div>
-            <div class="absolute bottom-3 left-4 right-4 flex justify-between items-end">
-              <span class="text-xs font-semibold text-amberLight bg-obsidian/85 px-3 py-1 rounded-full border border-amberGold/30">
+            <div class="absolute bottom-3 left-3 right-3 flex justify-between items-end">
+              <span class="text-[11px] sm:text-xs font-semibold text-amberLight bg-obsidian/85 px-3 py-1 rounded-full border border-amberGold/30">
                 Dédouanement inclus jusqu'à Kinshasa
               </span>
             </div>
           </div>
 
-          <div class="grid grid-cols-3 gap-3 mt-4 text-center">
-            <div class="bg-white/5 rounded-2xl p-3.5 border border-white/5">
-              <p class="text-[11px] text-slate-400">Voie Express</p>
-              <p class="text-base font-extrabold text-white mt-0.5">&lt; 5 jours</p>
-              <p class="text-[11px] text-amberLight mt-0.5">Dès 18 $/kg</p>
+          <div class="grid grid-cols-3 gap-2 sm:gap-3 mt-3.5 sm:mt-4 text-center">
+            <div class="bg-white/5 rounded-2xl p-2.5 sm:p-3.5 border border-white/5">
+              <p class="text-[10px] sm:text-[11px] text-slate-400">Voie Express</p>
+              <p class="text-sm sm:text-base font-extrabold text-white mt-0.5">&lt; 5 jours</p>
+              <p class="text-[10px] sm:text-[11px] text-amberLight mt-0.5">Dès 18 $/kg</p>
             </div>
-            <div class="bg-white/5 rounded-2xl p-3.5 border border-white/5">
-              <p class="text-[11px] text-slate-400">Cargo Groupage</p>
-              <p class="text-base font-extrabold text-white mt-0.5">± 45 jours</p>
-              <p class="text-[11px] text-amberLight mt-0.5">Dès 550 $/m³</p>
+            <div class="bg-white/5 rounded-2xl p-2.5 sm:p-3.5 border border-white/5">
+              <p class="text-[10px] sm:text-[11px] text-slate-400">Cargo Groupage</p>
+              <p class="text-sm sm:text-base font-extrabold text-white mt-0.5">± 45 jours</p>
+              <p class="text-[10px] sm:text-[11px] text-amberLight mt-0.5">Dès 550 $/m³</p>
             </div>
-            <div class="bg-white/5 rounded-2xl p-3.5 border border-white/5">
-              <p class="text-[11px] text-slate-400">Sponsoring</p>
-              <p class="text-base font-extrabold text-amberGold mt-0.5">250 USD</p>
-              <p class="text-[11px] text-slate-300 mt-0.5">Premier palier</p>
+            <div class="bg-white/5 rounded-2xl p-2.5 sm:p-3.5 border border-white/5">
+              <p class="text-[10px] sm:text-[11px] text-slate-400">Sponsoring</p>
+              <p class="text-sm sm:text-base font-extrabold text-amberGold mt-0.5">250 USD</p>
+              <p class="text-[10px] sm:text-[11px] text-slate-300 mt-0.5">Premier palier</p>
             </div>
           </div>
         </div>
@@ -171,23 +189,23 @@
   </section>
 
   <!-- Section 1 : Grille Tarifaire Officielle + Images des Services -->
-  <section id="tarifs" class="max-w-7xl mx-auto px-4 sm:px-6 py-20">
-    <div class="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-4">
+  <section id="tarifs" class="max-w-7xl mx-auto px-4 sm:px-6 py-14 sm:py-20">
+    <div class="flex flex-col md:flex-row md:items-end justify-between mb-10 sm:mb-12 gap-3 sm:gap-4">
       <div>
         <span class="text-xs font-extrabold uppercase tracking-widest text-amberGold">Grille Tarifaire Officielle</span>
-        <h2 class="text-3xl sm:text-4xl font-extrabold text-obsidian mt-1">Expédition Express & Cargo vers Kinshasa</h2>
+        <h2 class="text-2xl sm:text-4xl font-extrabold text-obsidian mt-1">Expédition Express & Cargo vers Kinshasa</h2>
       </div>
-      <p class="text-slate-600 text-sm max-w-md">
+      <p class="text-slate-600 text-xs sm:text-sm max-w-md">
         Tarifs tout compris (fret international + formalités douanières standards). Retrouvez nos coordonnées officielles en haut de page.
       </p>
     </div>
 
-    <!-- 3 Cartes Formules avec images de service -->
-    <div class="grid lg:grid-cols-3 gap-7 mb-14">
+    <!-- 3 Cartes Formules -->
+    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-7 mb-12 sm:mb-14">
       <!-- Express -->
       <div class="service-card bg-white rounded-3xl border border-slate-200/80 shadow-xl shadow-slate-200/40 flex flex-col justify-between overflow-hidden">
         <div>
-          <div class="service-img-wrap h-48">
+          <div class="service-img-wrap h-44 sm:h-48">
             <img
               src="https://images.unsplash.com/photo-1436491865332-7a61a109cc05?auto=format&fit=crop&w=900&q=80"
               alt="Fret aérien express international"
@@ -195,30 +213,30 @@
               onerror="this.src='https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=900&q=80'"
             />
             <div class="absolute inset-0 bg-gradient-to-t from-obsidian/80 via-obsidian/20 to-transparent"></div>
-            <div class="absolute bottom-3 left-4 right-4 flex items-center justify-between">
-              <span class="px-3 py-1 rounded-full bg-obsidian/90 text-amberLight text-xs font-bold border border-amberGold/30">Voie Aérienne</span>
-              <span class="text-xs font-extrabold text-obsidian bg-amberLight px-3 py-1 rounded-full">Moins de 5 jours</span>
+            <div class="absolute bottom-3 left-3.5 right-3.5 flex items-center justify-between gap-2">
+              <span class="px-2.5 py-1 rounded-full bg-obsidian/90 text-amberLight text-[11px] sm:text-xs font-bold border border-amberGold/30">Voie Aérienne</span>
+              <span class="text-[11px] sm:text-xs font-extrabold text-obsidian bg-amberLight px-2.5 py-1 rounded-full">Moins de 5 jours</span>
             </div>
           </div>
 
-          <div class="p-7">
-            <h3 class="text-xl font-extrabold text-obsidian">Colis Express International</h3>
+          <div class="p-5 sm:p-7">
+            <h3 class="text-lg sm:text-xl font-extrabold text-obsidian">Colis Express International</h3>
             <p class="text-xs text-slate-500 mt-1">Chine, Dubaï, Europe, Asie & Maghreb → Kinshasa</p>
 
-            <div class="mt-5 p-5 rounded-2xl bg-sand border border-slate-200/70">
-              <span class="text-xs font-semibold text-slate-500 uppercase">Tarif tout compris</span>
+            <div class="mt-4 sm:mt-5 p-4 sm:p-5 rounded-2xl bg-sand border border-slate-200/70">
+              <span class="text-[11px] sm:text-xs font-semibold text-slate-500 uppercase">Tarif tout compris</span>
               <div class="flex items-baseline gap-2 mt-1">
-                <span class="text-3xl font-extrabold text-obsidian">18 à 25 USD</span>
-                <span class="text-sm font-semibold text-slate-500">/ kg</span>
+                <span class="text-2xl sm:text-3xl font-extrabold text-obsidian">18 à 25 USD</span>
+                <span class="text-xs sm:text-sm font-semibold text-slate-500">/ kg</span>
               </div>
               <p class="text-xs font-bold text-amberGold mt-1">soit 40 500 à 56 250 CDF / kg</p>
-              <div class="mt-3 pt-3 border-t border-slate-200/80 flex items-center justify-between text-xs">
+              <div class="mt-3 pt-3 border-t border-slate-200/80 flex flex-wrap items-center justify-between gap-1 text-xs">
                 <span class="font-semibold text-obsidian">📱 Envoi d'un téléphone :</span>
                 <span class="font-extrabold text-amberGold">+ 12 USD (27 000 CDF)</span>
               </div>
             </div>
 
-            <ul class="mt-6 space-y-3 text-xs sm:text-sm text-slate-600">
+            <ul class="mt-5 sm:mt-6 space-y-2.5 sm:space-y-3 text-xs sm:text-sm text-slate-600">
               <li class="flex items-start gap-2.5"><span class="text-amberGold font-bold">●</span> <span><strong>Rapidité maximale :</strong> Livraison à Kinshasa en moins de 5 jours ouvrables après réception à l'entrepôt.</span></li>
               <li class="flex items-start gap-2.5"><span class="text-amberGold font-bold">●</span> <span><strong>Supplément Téléphone :</strong> Frais fixes de <strong>+ 12 USD</strong> par appareil pour l'expédition d'un téléphone.</span></li>
               <li class="flex items-start gap-2.5"><span class="text-amberGold font-bold">●</span> <span><strong>Autres colis adaptés :</strong> Documents, ordinateurs, vêtements, échantillons, pièces urgentes.</span></li>
@@ -230,7 +248,7 @@
       <!-- Cargo -->
       <div class="service-card bg-obsidian text-white rounded-3xl shadow-2xl shadow-obsidian/20 flex flex-col justify-between overflow-hidden border border-white/10">
         <div>
-          <div class="service-img-wrap h-48">
+          <div class="service-img-wrap h-44 sm:h-48">
             <img
               src="https://images.unsplash.com/photo-1578575437130-527eed3abbec?auto=format&fit=crop&w=900&q=80"
               alt="Cargo maritime et conteneurs"
@@ -238,26 +256,26 @@
               onerror="this.src='https://images.unsplash.com/photo-1494412574643-ff11b0a5c1c3?auto=format&fit=crop&w=900&q=80'"
             />
             <div class="absolute inset-0 bg-gradient-to-t from-obsidian via-obsidian/25 to-transparent"></div>
-            <div class="absolute bottom-3 left-4 right-4 flex items-center justify-between">
-              <span class="px-3 py-1 rounded-full bg-amberGold/25 text-amberLight text-xs font-bold border border-amberGold/30">Groupage Maritime</span>
-              <span class="text-xs font-extrabold text-obsidian bg-amberLight px-3 py-1 rounded-full">± 45 jours</span>
+            <div class="absolute bottom-3 left-3.5 right-3.5 flex items-center justify-between gap-2">
+              <span class="px-2.5 py-1 rounded-full bg-amberGold/25 text-amberLight text-[11px] sm:text-xs font-bold border border-amberGold/30">Groupage Maritime</span>
+              <span class="text-[11px] sm:text-xs font-extrabold text-obsidian bg-amberLight px-2.5 py-1 rounded-full">± 45 jours</span>
             </div>
           </div>
 
-          <div class="p-7">
-            <h3 class="text-xl font-extrabold text-white">Cargo Volume & Gros Colis</h3>
+          <div class="p-5 sm:p-7">
+            <h3 class="text-lg sm:text-xl font-extrabold text-white">Cargo Volume & Gros Colis</h3>
             <p class="text-xs text-slate-400 mt-1">Chine, Dubaï, Belgique, France → Matadi / Kinshasa</p>
 
-            <div class="mt-5 p-5 rounded-2xl bg-white/5 border border-white/10">
-              <span class="text-xs font-semibold text-slate-400 uppercase">Tarif au volume (CBM)</span>
+            <div class="mt-4 sm:mt-5 p-4 sm:p-5 rounded-2xl bg-white/5 border border-white/10">
+              <span class="text-[11px] sm:text-xs font-semibold text-slate-400 uppercase">Tarif au volume (CBM)</span>
               <div class="flex items-baseline gap-2 mt-1">
-                <span class="text-3xl font-extrabold text-amberLight">550 à 680 USD</span>
-                <span class="text-sm font-semibold text-slate-300">/ m³</span>
+                <span class="text-2xl sm:text-3xl font-extrabold text-amberLight">550 à 680 USD</span>
+                <span class="text-xs sm:text-sm font-semibold text-slate-300">/ m³</span>
               </div>
               <p class="text-xs font-semibold text-slate-300 mt-1">ou dès 5,50 USD / kg (12 375 CDF / kg)</p>
             </div>
 
-            <ul class="mt-6 space-y-3 text-xs sm:text-sm text-slate-300">
+            <ul class="mt-5 sm:mt-6 space-y-2.5 sm:space-y-3 text-xs sm:text-sm text-slate-300">
               <li class="flex items-start gap-2.5"><span class="text-amberGold font-bold">●</span> <span><strong>Délai garanti :</strong> Plus ou moins 45 jours jusqu’à notre dépôt de Kinshasa via Matadi/Boma.</span></li>
               <li class="flex items-start gap-2.5"><span class="text-amberGold font-bold">●</span> <span><strong>Colis adaptés :</strong> Cartons commerciaux, machines, mobilier, équipements, marchandises en gros.</span></li>
               <li class="flex items-start gap-2.5"><span class="text-amberGold font-bold">●</span> <span><strong>Sérénité :</strong> Dédouanement groupé entièrement pris en charge jusqu'à Kinshasa.</span></li>
@@ -267,9 +285,9 @@
       </div>
 
       <!-- Liaison Nationale -->
-      <div class="service-card bg-white rounded-3xl border border-slate-200/80 shadow-xl shadow-slate-200/40 flex flex-col justify-between overflow-hidden">
+      <div class="service-card bg-white rounded-3xl border border-slate-200/80 shadow-xl shadow-slate-200/40 flex flex-col justify-between overflow-hidden md:col-span-2 lg:col-span-1">
         <div>
-          <div class="service-img-wrap h-48">
+          <div class="service-img-wrap h-44 sm:h-48">
             <img
               src="https://images.unsplash.com/photo-1601584115197-04ecc0da31d7?auto=format&fit=crop&w=900&q=80"
               alt="Transport et livraison logistique"
@@ -277,26 +295,26 @@
               onerror="this.src='https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=900&q=80'"
             />
             <div class="absolute inset-0 bg-gradient-to-t from-obsidian/80 via-obsidian/20 to-transparent"></div>
-            <div class="absolute bottom-3 left-4 right-4 flex items-center justify-between">
-              <span class="px-3 py-1 rounded-full bg-obsidian/90 text-white text-xs font-bold">Territoire RDC</span>
-              <span class="text-xs font-extrabold text-obsidian bg-sand px-3 py-1 rounded-full">2 à 6 jours</span>
+            <div class="absolute bottom-3 left-3.5 right-3.5 flex items-center justify-between gap-2">
+              <span class="px-2.5 py-1 rounded-full bg-obsidian/90 text-white text-[11px] sm:text-xs font-bold">Territoire RDC</span>
+              <span class="text-[11px] sm:text-xs font-extrabold text-obsidian bg-sand px-2.5 py-1 rounded-full">2 à 6 jours</span>
             </div>
           </div>
 
-          <div class="p-7">
-            <h3 class="text-xl font-extrabold text-obsidian">Liaisons Intérieures RDC</h3>
+          <div class="p-5 sm:p-7">
+            <h3 class="text-lg sm:text-xl font-extrabold text-obsidian">Liaisons Intérieures RDC</h3>
             <p class="text-xs text-slate-500 mt-1">Kinshasa ↔ Matadi, Boma, Lubumbashi, Goma, Kolwezi</p>
 
-            <div class="mt-5 p-5 rounded-2xl bg-sand border border-slate-200/70">
-              <span class="text-xs font-semibold text-slate-500 uppercase">Tarif national</span>
+            <div class="mt-4 sm:mt-5 p-4 sm:p-5 rounded-2xl bg-sand border border-slate-200/70">
+              <span class="text-[11px] sm:text-xs font-semibold text-slate-500 uppercase">Tarif national</span>
               <div class="flex items-baseline gap-2 mt-1">
-                <span class="text-3xl font-extrabold text-obsidian">3,50 à 8 USD</span>
-                <span class="text-sm font-semibold text-slate-500">/ kg</span>
+                <span class="text-2xl sm:text-3xl font-extrabold text-obsidian">3,50 à 8 USD</span>
+                <span class="text-xs sm:text-sm font-semibold text-slate-500">/ kg</span>
               </div>
               <p class="text-xs font-bold text-amberGold mt-1">soit 7 875 à 18 000 CDF / kg</p>
             </div>
 
-            <ul class="mt-6 space-y-3 text-xs sm:text-sm text-slate-600">
+            <ul class="mt-5 sm:mt-6 space-y-2.5 sm:space-y-3 text-xs sm:text-sm text-slate-600">
               <li class="flex items-start gap-2.5"><span class="text-amberGold font-bold">●</span> <span><strong>Kongo-Central :</strong> Liaison routière rapide Kinshasa ↔ Matadi / Boma en 24h à 48h.</span></li>
               <li class="flex items-start gap-2.5"><span class="text-amberGold font-bold">●</span> <span><strong>Grand Katanga & Kivu :</strong> Acheminement aérien sécurisé vers Lubumbashi, Kolwezi et Goma.</span></li>
               <li class="flex items-start gap-2.5"><span class="text-amberGold font-bold">●</span> <span><strong>Sécurité :</strong> Remise au destinataire contre pièce d'identité et décharge officielle.</span></li>
@@ -307,9 +325,9 @@
     </div>
 
     <!-- Bandeau visuel des corridors et services -->
-    <div class="grid md:grid-cols-3 gap-6 mb-14">
+    <div class="grid sm:grid-cols-2 md:grid-cols-3 gap-5 sm:gap-6 mb-12 sm:mb-14">
       <div class="service-card bg-white rounded-2xl overflow-hidden border border-slate-200/80 shadow-md">
-        <div class="service-img-wrap h-40">
+        <div class="service-img-wrap h-36 sm:h-40">
           <img
             src="https://images.unsplash.com/photo-1553413077-190dd305871c?auto=format&fit=crop&w=800&q=80"
             alt="Entrepôt et préparation des colis"
@@ -323,7 +341,7 @@
       </div>
 
       <div class="service-card bg-white rounded-2xl overflow-hidden border border-slate-200/80 shadow-md">
-        <div class="service-img-wrap h-40">
+        <div class="service-img-wrap h-36 sm:h-40">
           <img
             src="https://images.unsplash.com/photo-1512436991641-6745cdb1723f?auto=format&fit=crop&w=800&q=80"
             alt="Marchandises commerciales et téléphonie"
@@ -336,8 +354,8 @@
         </div>
       </div>
 
-      <div class="service-card bg-white rounded-2xl overflow-hidden border border-slate-200/80 shadow-md">
-        <div class="service-img-wrap h-40">
+      <div class="service-card bg-white rounded-2xl overflow-hidden border border-slate-200/80 shadow-md sm:col-span-2 md:col-span-1">
+        <div class="service-img-wrap h-36 sm:h-40">
           <img
             src="https://images.unsplash.com/photo-1521737604893-d14cc237f11d?auto=format&fit=crop&w=800&q=80"
             alt="Accompagnement et parrainage PME"
@@ -351,52 +369,52 @@
       </div>
     </div>
 
-    <!-- Tableau comparatif par destination -->
+    <!-- Tableau comparatif par destination (Défilement horizontal fluide sur mobile) -->
     <div class="bg-white rounded-3xl border border-slate-200/80 shadow-lg overflow-hidden">
-      <div class="bg-midnight text-white px-7 py-5 flex flex-wrap items-center justify-between gap-2">
-        <h3 class="text-sm font-extrabold uppercase tracking-wider">Grille détaillée par corridor vers Kinshasa</h3>
-        <span class="text-xs text-amberLight">Taux appliqué : 1 USD = 2 250 CDF • Supplément téléphone : + 12 USD</span>
+      <div class="bg-midnight text-white px-5 sm:px-7 py-4 sm:py-5 flex flex-col sm:flex-row sm:items-center justify-between gap-1.5">
+        <h3 class="text-xs sm:text-sm font-extrabold uppercase tracking-wider">Grille détaillée par corridor vers Kinshasa</h3>
+        <span class="text-[11px] sm:text-xs text-amberLight">1 USD = 2 250 CDF • Téléphone : + 12 USD</span>
       </div>
       <div class="overflow-x-auto">
-        <table class="w-full text-left border-collapse text-xs sm:text-sm">
+        <table class="w-full min-w-[640px] text-left border-collapse text-xs sm:text-sm">
           <thead>
             <tr class="bg-sand border-b border-slate-200 text-obsidian font-extrabold">
-              <th class="py-4 px-6">Provenance / Corridor</th>
-              <th class="py-4 px-6">Express (&lt; 5 jours)</th>
-              <th class="py-4 px-6">Cargo (± 45 jours)</th>
-              <th class="py-4 px-6">Conditions & Fréquence</th>
+              <th class="py-3.5 px-5 sm:px-6">Provenance / Corridor</th>
+              <th class="py-3.5 px-5 sm:px-6">Express (&lt; 5 jours)</th>
+              <th class="py-3.5 px-5 sm:px-6">Cargo (± 45 jours)</th>
+              <th class="py-3.5 px-5 sm:px-6">Conditions & Fréquence</th>
             </tr>
           </thead>
           <tbody class="divide-y divide-slate-100 text-slate-700">
             <tr class="hover:bg-sand/60 transition">
-              <td class="py-4 px-6 font-bold text-obsidian">Chine (Guangzhou / Yiwu) → Kinshasa</td>
-              <td class="py-4 px-6 font-extrabold text-obsidian">20 USD / kg <span class="block text-[11px] font-normal text-slate-500">45 000 CDF (+12$ si téléphone)</span></td>
-              <td class="py-4 px-6 font-extrabold text-amberGold">580 USD / CBM <span class="block text-[11px] font-normal text-slate-500">1 305 000 CDF</span></td>
-              <td class="py-4 px-6 text-xs">Départs chaque semaine • Dédouanement inclus</td>
+              <td class="py-3.5 px-5 sm:px-6 font-bold text-obsidian">Chine (Guangzhou / Yiwu) → Kinshasa</td>
+              <td class="py-3.5 px-5 sm:px-6 font-extrabold text-obsidian">20 USD / kg <span class="block text-[11px] font-normal text-slate-500">45 000 CDF (+12$ si téléphone)</span></td>
+              <td class="py-3.5 px-5 sm:px-6 font-extrabold text-amberGold">580 USD / CBM <span class="block text-[11px] font-normal text-slate-500">1 305 000 CDF</span></td>
+              <td class="py-3.5 px-5 sm:px-6 text-xs">Départs chaque semaine • Dédouanement inclus</td>
             </tr>
             <tr class="hover:bg-sand/60 transition">
-              <td class="py-4 px-6 font-bold text-obsidian">Dubaï (Émirats Arabes Unis) → Kinshasa</td>
-              <td class="py-4 px-6 font-extrabold text-obsidian">18 USD / kg <span class="block text-[11px] font-normal text-slate-500">40 500 CDF (+12$ si téléphone)</span></td>
-              <td class="py-4 px-6 font-extrabold text-amberGold">550 USD / CBM <span class="block text-[11px] font-normal text-slate-500">1 237 500 CDF</span></td>
-              <td class="py-4 px-6 text-xs">Idéal téléphonie, informatique, parfums & pièces</td>
+              <td class="py-3.5 px-5 sm:px-6 font-bold text-obsidian">Dubaï (Émirats Arabes Unis) → Kinshasa</td>
+              <td class="py-3.5 px-5 sm:px-6 font-extrabold text-obsidian">18 USD / kg <span class="block text-[11px] font-normal text-slate-500">40 500 CDF (+12$ si téléphone)</span></td>
+              <td class="py-3.5 px-5 sm:px-6 font-extrabold text-amberGold">550 USD / CBM <span class="block text-[11px] font-normal text-slate-500">1 237 500 CDF</span></td>
+              <td class="py-3.5 px-5 sm:px-6 text-xs">Idéal téléphonie, informatique, parfums & pièces</td>
             </tr>
             <tr class="hover:bg-sand/60 transition">
-              <td class="py-4 px-6 font-bold text-obsidian">Belgique & France → Kinshasa</td>
-              <td class="py-4 px-6 font-extrabold text-obsidian">19 USD / kg <span class="block text-[11px] font-normal text-slate-500">42 750 CDF (+12$ si téléphone)</span></td>
-              <td class="py-4 px-6 font-extrabold text-amberGold">620 USD / CBM <span class="block text-[11px] font-normal text-slate-500">1 395 000 CDF</span></td>
-              <td class="py-4 px-6 text-xs">Dépôt entrepôt ou collecte Bruxelles / Paris</td>
+              <td class="py-3.5 px-5 sm:px-6 font-bold text-obsidian">Belgique & France → Kinshasa</td>
+              <td class="py-3.5 px-5 sm:px-6 font-extrabold text-obsidian">19 USD / kg <span class="block text-[11px] font-normal text-slate-500">42 750 CDF (+12$ si téléphone)</span></td>
+              <td class="py-3.5 px-5 sm:px-6 font-extrabold text-amberGold">620 USD / CBM <span class="block text-[11px] font-normal text-slate-500">1 395 000 CDF</span></td>
+              <td class="py-3.5 px-5 sm:px-6 text-xs">Dépôt entrepôt ou collecte Bruxelles / Paris</td>
             </tr>
             <tr class="hover:bg-sand/60 transition">
-              <td class="py-4 px-6 font-bold text-obsidian">Philippines & Singapour → Kinshasa</td>
-              <td class="py-4 px-6 font-extrabold text-obsidian">24 USD / kg <span class="block text-[11px] font-normal text-slate-500">54 000 CDF (+12$ si téléphone)</span></td>
-              <td class="py-4 px-6 font-extrabold text-amberGold">650 USD / CBM <span class="block text-[11px] font-normal text-slate-500">1 462 500 CDF</span></td>
-              <td class="py-4 px-6 text-xs">Sur réservation préalable</td>
+              <td class="py-3.5 px-5 sm:px-6 font-bold text-obsidian">Philippines & Singapour → Kinshasa</td>
+              <td class="py-3.5 px-5 sm:px-6 font-extrabold text-obsidian">24 USD / kg <span class="block text-[11px] font-normal text-slate-500">54 000 CDF (+12$ si téléphone)</span></td>
+              <td class="py-3.5 px-5 sm:px-6 font-extrabold text-amberGold">650 USD / CBM <span class="block text-[11px] font-normal text-slate-500">1 462 500 CDF</span></td>
+              <td class="py-3.5 px-5 sm:px-6 text-xs">Sur réservation préalable</td>
             </tr>
             <tr class="hover:bg-sand/60 transition">
-              <td class="py-4 px-6 font-bold text-obsidian">Tunisie & Maroc → Kinshasa</td>
-              <td class="py-4 px-6 font-extrabold text-obsidian">21 USD / kg <span class="block text-[11px] font-normal text-slate-500">47 250 CDF (+12$ si téléphone)</span></td>
-              <td class="py-4 px-6 font-extrabold text-amberGold">600 USD / CBM <span class="block text-[11px] font-normal text-slate-500">1 350 000 CDF</span></td>
-              <td class="py-4 px-6 text-xs">Prêt-à-porter, cosmétiques, agroalimentaire</td>
+              <td class="py-3.5 px-5 sm:px-6 font-bold text-obsidian">Tunisie & Maroc → Kinshasa</td>
+              <td class="py-3.5 px-5 sm:px-6 font-extrabold text-obsidian">21 USD / kg <span class="block text-[11px] font-normal text-slate-500">47 250 CDF (+12$ si téléphone)</span></td>
+              <td class="py-3.5 px-5 sm:px-6 font-extrabold text-amberGold">600 USD / CBM <span class="block text-[11px] font-normal text-slate-500">1 350 000 CDF</span></td>
+              <td class="py-3.5 px-5 sm:px-6 text-xs">Prêt-à-porter, cosmétiques, agroalimentaire</td>
             </tr>
           </tbody>
         </table>
@@ -405,18 +423,18 @@
   </section>
 
   <!-- Section 2 : Ce que le client doit préparer avant d'expédier -->
-  <section id="procedure-fret" class="bg-white border-y border-slate-200/80 py-20">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 space-y-10">
+  <section id="procedure-fret" class="bg-white border-y border-slate-200/80 py-14 sm:py-20">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 space-y-8 sm:space-y-10">
       <div class="max-w-3xl">
         <span class="text-xs font-extrabold uppercase tracking-widest text-amberGold">Guide Pratique Fret</span>
-        <h2 class="text-3xl font-extrabold text-obsidian mt-1">Ce que vous devez préparer avant d’expédier</h2>
-        <p class="text-slate-600 text-sm sm:text-base mt-2">
+        <h2 class="text-2xl sm:text-3xl font-extrabold text-obsidian mt-1">Ce que vous devez préparer avant d’expédier</h2>
+        <p class="text-slate-600 text-xs sm:text-base mt-2">
           Rassemblez ces 4 éléments avant tout dépôt de colis afin de faciliter l'identification et l'acheminement de votre marchandise.
         </p>
       </div>
 
-      <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
-        <div class="bg-sand rounded-2xl p-6 border border-slate-200/70 space-y-3">
+      <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-5 sm:gap-6">
+        <div class="bg-sand rounded-2xl p-5 sm:p-6 border border-slate-200/70 space-y-2.5 sm:space-y-3">
           <span class="w-9 h-9 rounded-xl bg-obsidian text-amberLight font-extrabold flex items-center justify-center text-sm">01</span>
           <h3 class="font-extrabold text-obsidian text-base">Identités & Contacts</h3>
           <p class="text-xs text-slate-600 leading-relaxed">
@@ -424,7 +442,7 @@
           </p>
         </div>
 
-        <div class="bg-sand rounded-2xl p-6 border border-slate-200/70 space-y-3">
+        <div class="bg-sand rounded-2xl p-5 sm:p-6 border border-slate-200/70 space-y-2.5 sm:space-y-3">
           <span class="w-9 h-9 rounded-xl bg-obsidian text-amberLight font-extrabold flex items-center justify-center text-sm">02</span>
           <h3 class="font-extrabold text-obsidian text-base">Inventaire & Valeur</h3>
           <p class="text-xs text-slate-600 leading-relaxed">
@@ -432,7 +450,7 @@
           </p>
         </div>
 
-        <div class="bg-sand rounded-2xl p-6 border border-slate-200/70 space-y-3">
+        <div class="bg-sand rounded-2xl p-5 sm:p-6 border border-slate-200/70 space-y-2.5 sm:space-y-3">
           <span class="w-9 h-9 rounded-xl bg-obsidian text-amberLight font-extrabold flex items-center justify-center text-sm">03</span>
           <h3 class="font-extrabold text-obsidian text-base">Poids & Dimensions</h3>
           <p class="text-xs text-slate-600 leading-relaxed">
@@ -440,7 +458,7 @@
           </p>
         </div>
 
-        <div class="bg-sand rounded-2xl p-6 border border-slate-200/70 space-y-3">
+        <div class="bg-sand rounded-2xl p-5 sm:p-6 border border-slate-200/70 space-y-2.5 sm:space-y-3">
           <span class="w-9 h-9 rounded-xl bg-obsidian text-amberLight font-extrabold flex items-center justify-center text-sm">04</span>
           <h3 class="font-extrabold text-obsidian text-base">Adresse de Livraison</h3>
           <p class="text-xs text-slate-600 leading-relaxed">
@@ -449,34 +467,34 @@
         </div>
       </div>
 
-      <div class="bg-amberGold/10 border border-amberGold/30 rounded-2xl p-5 text-xs sm:text-sm text-obsidian">
+      <div class="bg-amberGold/10 border border-amberGold/30 rounded-2xl p-4 sm:p-5 text-xs sm:text-sm text-obsidian leading-relaxed">
         <strong>📱 Téléphones & Appareils électroniques :</strong> Un supplément fixe de <strong>+ 12 USD (27 000 CDF)</strong> s'applique pour tout envoi de téléphone. Signalez-le obligatoirement ainsi que les batteries lithium, liquides ou cosmétiques avant le dépôt.
       </div>
     </div>
   </section>
 
   <!-- Section 3 : Programme de Sponsoring + Prérequis -->
-  <section id="sponsoring" class="max-w-7xl mx-auto px-4 sm:px-6 py-20 space-y-16">
+  <section id="sponsoring" class="max-w-7xl mx-auto px-4 sm:px-6 py-14 sm:py-20 space-y-12 sm:space-y-16">
     <div class="max-w-3xl">
       <span class="text-xs font-extrabold uppercase tracking-widest text-amberGold">Partenariat & Parrainage d'Entreprises</span>
-      <h2 class="text-3xl sm:text-4xl font-extrabold text-obsidian mt-1">Programme Officiel de Sponsoring</h2>
-      <p class="text-slate-600 text-sm sm:text-base mt-2 leading-relaxed">
+      <h2 class="text-2xl sm:text-4xl font-extrabold text-obsidian mt-1">Programme Officiel de Sponsoring</h2>
+      <p class="text-slate-600 text-xs sm:text-base mt-2 leading-relaxed">
         Soutenez l’essor des PME congolaises et associez votre marque à nos corridors commerciaux internationaux. Découvrez la procédure préalable et nos 4 paliers officiels.
       </p>
     </div>
 
     <!-- Tout ce qu'il faut faire avant le sponsoring -->
-    <div class="bg-obsidian text-white rounded-3xl p-7 sm:p-10 shadow-2xl border border-white/10 space-y-8">
-      <div class="border-b border-white/10 pb-6">
-        <span class="px-3 py-1 rounded-full bg-amberGold/20 text-amberLight text-xs font-bold uppercase tracking-wider">Procédure Obligatoire</span>
-        <h3 class="text-2xl sm:text-3xl font-extrabold mt-2">Tout ce que vous devez faire avant le sponsoring</h3>
-        <p class="text-xs sm:text-sm text-slate-300 mt-1">
+    <div class="bg-obsidian text-white rounded-3xl p-5 sm:p-10 shadow-2xl border border-white/10 space-y-7 sm:space-y-8">
+      <div class="border-b border-white/10 pb-5 sm:pb-6">
+        <span class="px-3 py-1 rounded-full bg-amberGold/20 text-amberLight text-[11px] sm:text-xs font-bold uppercase tracking-wider">Procédure Obligatoire</span>
+        <h3 class="text-xl sm:text-3xl font-extrabold mt-2">Tout ce que vous devez faire avant le sponsoring</h3>
+        <p class="text-xs sm:text-sm text-slate-300 mt-1.5 leading-relaxed">
           Pour garantir la transparence, la conformité légale et la traçabilité des fonds, chaque sponsor ou porteur de projet doit suivre ces 4 étapes préalables :
         </p>
       </div>
 
-      <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-        <div class="bg-white/5 border border-white/10 rounded-2xl p-5 space-y-3">
+      <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-5 sm:gap-6">
+        <div class="bg-white/5 border border-white/10 rounded-2xl p-5 space-y-2.5 sm:space-y-3">
           <div class="flex items-center justify-between">
             <span class="text-xs font-extrabold uppercase tracking-wider text-amberLight">Étape 01</span>
             <span class="text-lg">📋</span>
@@ -487,7 +505,7 @@
           </p>
         </div>
 
-        <div class="bg-white/5 border border-white/10 rounded-2xl p-5 space-y-3">
+        <div class="bg-white/5 border border-white/10 rounded-2xl p-5 space-y-2.5 sm:space-y-3">
           <div class="flex items-center justify-between">
             <span class="text-xs font-extrabold uppercase tracking-wider text-amberLight">Étape 02</span>
             <span class="text-lg">🎯</span>
@@ -498,7 +516,7 @@
           </p>
         </div>
 
-        <div class="bg-white/5 border border-white/10 rounded-2xl p-5 space-y-3">
+        <div class="bg-white/5 border border-white/10 rounded-2xl p-5 space-y-2.5 sm:space-y-3">
           <div class="flex items-center justify-between">
             <span class="text-xs font-extrabold uppercase tracking-wider text-amberLight">Étape 03</span>
             <span class="text-lg">🤝</span>
@@ -509,7 +527,7 @@
           </p>
         </div>
 
-        <div class="bg-white/5 border border-white/10 rounded-2xl p-5 space-y-3">
+        <div class="bg-white/5 border border-white/10 rounded-2xl p-5 space-y-2.5 sm:space-y-3">
           <div class="flex items-center justify-between">
             <span class="text-xs font-extrabold uppercase tracking-wider text-amberLight">Étape 04</span>
             <span class="text-lg">✍️</span>
@@ -522,15 +540,15 @@
       </div>
 
       <!-- Distinction Sponsor vs PME bénéficiaire -->
-      <div class="grid md:grid-cols-2 gap-5 pt-2">
-        <div class="bg-midnight/90 border border-amberGold/25 rounded-2xl p-5">
-          <h4 class="text-sm font-extrabold text-amberLight mb-2">📌 Si vous êtes une Entreprise Sponsor (Investisseur / Partenaire)</h4>
+      <div class="grid md:grid-cols-2 gap-4 sm:gap-5 pt-1">
+        <div class="bg-midnight/90 border border-amberGold/25 rounded-2xl p-4 sm:p-5">
+          <h4 class="text-sm font-extrabold text-amberLight mb-1.5 sm:mb-2">📌 Si vous êtes une Entreprise Sponsor (Investisseur / Partenaire)</h4>
           <p class="text-xs text-slate-300 leading-relaxed">
             Aucun versement ne doit être effectué avant la validation écrite de notre direction et l'établissement de votre convention nominative. Vous recevez un rapport d'affectation précis des fonds alloués.
           </p>
         </div>
-        <div class="bg-midnight/90 border border-white/10 rounded-2xl p-5">
-          <h4 class="text-sm font-extrabold text-white mb-2">📌 Si vous êtes une PME / Porteur de Projet en RDC</h4>
+        <div class="bg-midnight/90 border border-white/10 rounded-2xl p-4 sm:p-5">
+          <h4 class="text-sm font-extrabold text-white mb-1.5 sm:mb-2">📌 Si vous êtes une PME / Porteur de Projet en RDC</h4>
           <p class="text-xs text-slate-300 leading-relaxed">
             Avant de solliciter un parrainage, préparez une fiche de présentation claire (activité, besoin chiffré en USD, facture proforma d'équipement ou de marchandise) et transmettez-la à notre adresse officielle.
           </p>
@@ -539,13 +557,13 @@
     </div>
 
     <!-- 4 Paliers de sponsoring -->
-    <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+    <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-5 sm:gap-6">
       <div class="bg-white border border-slate-200/80 rounded-3xl p-6 shadow-md">
         <span class="inline-block px-3 py-1 rounded-full bg-slate-100 text-[11px] font-extrabold uppercase tracking-wider text-obsidian">Niveau 1</span>
         <h3 class="text-lg font-extrabold text-obsidian mt-3">Partenaire</h3>
-        <p class="text-3xl font-extrabold text-obsidian mt-2">250 USD</p>
+        <p class="text-2xl sm:text-3xl font-extrabold text-obsidian mt-2">250 USD</p>
         <p class="text-xs font-semibold text-amberGold">soit 562 500 CDF</p>
-        <ul class="mt-5 space-y-2.5 text-xs text-slate-600">
+        <ul class="mt-4 sm:mt-5 space-y-2.5 text-xs text-slate-600">
           <li>• Mention officielle comme partenaire</li>
           <li>• Présentation de l’entreprise dans les supports</li>
           <li>• Reçu officiel de contribution</li>
@@ -555,9 +573,9 @@
       <div class="bg-white border border-slate-200/80 rounded-3xl p-6 shadow-md">
         <span class="inline-block px-3 py-1 rounded-full bg-slate-100 text-[11px] font-extrabold uppercase tracking-wider text-obsidian">Niveau 2</span>
         <h3 class="text-lg font-extrabold text-obsidian mt-3">Sponsor associé</h3>
-        <p class="text-3xl font-extrabold text-obsidian mt-2">500 USD</p>
+        <p class="text-2xl sm:text-3xl font-extrabold text-obsidian mt-2">500 USD</p>
         <p class="text-xs font-semibold text-amberGold">soit 1 125 000 CDF</p>
-        <ul class="mt-5 space-y-2.5 text-xs text-slate-600">
+        <ul class="mt-4 sm:mt-5 space-y-2.5 text-xs text-slate-600">
           <li>• Affichage du logo sur nos supports</li>
           <li>• Publications promotionnelles dédiées</li>
           <li>• Présentation officielle et reçu certifié</li>
@@ -567,9 +585,9 @@
       <div class="bg-obsidian text-white rounded-3xl p-6 shadow-xl border-2 border-amberGold">
         <span class="inline-block px-3 py-1 rounded-full bg-amberGold text-[11px] font-extrabold uppercase tracking-wider text-obsidian">Niveau 3 • Recommandé</span>
         <h3 class="text-lg font-extrabold text-white mt-3">Sponsor principal</h3>
-        <p class="text-3xl font-extrabold text-amberLight mt-2">1 000 USD</p>
+        <p class="text-2xl sm:text-3xl font-extrabold text-amberLight mt-2">1 000 USD</p>
         <p class="text-xs text-slate-300">soit 2 250 000 CDF</p>
-        <ul class="mt-5 space-y-2.5 text-xs text-slate-200">
+        <ul class="mt-4 sm:mt-5 space-y-2.5 text-xs text-slate-200">
           <li>• Logo prioritaire sur tous les supports</li>
           <li>• Parrainage direct d’une PME congolaise</li>
           <li>• Rapport d’impact trimestriel & certificat</li>
@@ -579,9 +597,9 @@
       <div class="bg-white border border-slate-200/80 rounded-3xl p-6 shadow-md">
         <span class="inline-block px-3 py-1 rounded-full bg-amberGold/15 text-[11px] font-extrabold uppercase tracking-wider text-obsidian">Niveau 4</span>
         <h3 class="text-lg font-extrabold text-obsidian mt-3">Partenaire Stratégique</h3>
-        <p class="text-3xl font-extrabold text-obsidian mt-2">2 500 USD & +</p>
+        <p class="text-2xl sm:text-3xl font-extrabold text-obsidian mt-2">2 500 USD & +</p>
         <p class="text-xs font-semibold text-amberGold">Convention sur mesure</p>
-        <ul class="mt-5 space-y-2.5 text-xs text-slate-600">
+        <ul class="mt-4 sm:mt-5 space-y-2.5 text-xs text-slate-600">
           <li>• Co-branding sur les événements et missions</li>
           <li>• Accès prioritaire aux flux import/export</li>
           <li>• Siège au comité de sélection des PME</li>
@@ -592,8 +610,8 @@
 
   <!-- Footer -->
   <footer class="bg-[#040811] text-slate-400 py-8 text-xs border-t border-white/10">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 flex flex-col sm:flex-row justify-between items-center gap-4">
-      <div class="flex items-center gap-2">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 flex flex-col sm:flex-row justify-between items-center text-center sm:text-left gap-3 sm:gap-4">
+      <div class="flex flex-col sm:flex-row items-center gap-1 sm:gap-2">
         <strong class="text-white text-sm">CongoLinkRDC</strong>
         <span>— Connecter • Échanger • Entreprendre</span>
       </div>
@@ -602,6 +620,18 @@
       </div>
     </div>
   </footer>
+
+  <!-- Script léger pour le menu mobile -->
+  <script>
+    const menuBtn = document.getElementById('mobile-menu-btn');
+    const mobileMenu = document.getElementById('mobile-menu');
+    menuBtn.addEventListener('click', () => {
+      mobileMenu.classList.toggle('hidden');
+    });
+    mobileMenu.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => mobileMenu.classList.add('hidden'));
+    });
+  </script>
 
 </body>
 </html>
