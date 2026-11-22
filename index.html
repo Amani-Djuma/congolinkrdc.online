@@ -2,7 +2,7 @@
 <html lang="fr" class="overflow-x-hidden">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
   <title>CongoLinkRDC — Connecter • Échanger • Entreprendre</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -28,9 +28,18 @@
     };
   </script>
   <style>
-    html { scroll-behavior: smooth; }
+    *, *::before, *::after {
+      animation: none !important;
+      transition: none !important;
+      transform: none !important;
+    }
+    html, body {
+      max-width: 100%;
+      overflow-x: hidden;
+      scroll-behavior: auto;
+    }
     .glass-dark {
-      background: rgba(12, 23, 43, 0.85);
+      background: rgba(12, 23, 43, 0.88);
       backdrop-filter: blur(14px);
       border: 1px solid rgba(255, 255, 255, 0.09);
     }
@@ -38,19 +47,11 @@
       overflow: hidden;
       position: relative;
     }
-    .service-img-wrap img {
-      transition: transform 0.55s cubic-bezier(0.22, 1, 0.36, 1);
-    }
-    @media (hover: hover) {
-      .service-card:hover .service-img-wrap img {
-        transform: scale(1.05);
-      }
-    }
   </style>
 </head>
 <body class="bg-sand text-slate-800 antialiased overflow-x-hidden selection:bg-amberGold/25 selection:text-obsidian">
 
-  <!-- En-tête supérieure STATIQUE (sans animation ni défilement) -->
+  <!-- En-tête supérieure 100% fixe et statique -->
   <div class="bg-obsidian text-slate-300 text-[11px] sm:text-xs border-b border-white/10">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 py-2.5 flex flex-col md:flex-row md:items-center md:justify-between gap-2">
       <div class="flex items-center gap-2">
@@ -65,8 +66,8 @@
     </div>
   </div>
 
-  <!-- Navigation principale responsive -->
-  <header class="sticky top-0 z-40 bg-obsidian/95 backdrop-blur-md border-b border-white/10 text-white">
+  <!-- Navigation principale statique (ne suit plus le défilement) -->
+  <header class="bg-obsidian border-b border-white/10 text-white">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 py-3 flex items-center justify-between gap-3">
       <a href="#" class="flex items-center gap-2.5 sm:gap-3 min-w-0">
         <div class="w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-gradient-to-br from-amberGold to-amberLight text-obsidian font-extrabold flex items-center justify-center text-sm sm:text-base shadow-lg shadow-amberGold/20 shrink-0">
@@ -80,17 +81,17 @@
 
       <!-- Navigation Desktop -->
       <nav class="hidden lg:flex items-center gap-8 text-sm font-medium text-slate-300">
-        <a href="#tarifs" class="hover:text-amberLight transition">Tarifs Express & Cargo</a>
-        <a href="#procedure-fret" class="hover:text-amberLight transition">Avant d'expédier</a>
-        <a href="#sponsoring" class="hover:text-amberLight transition">Sponsoring & Prérequis</a>
+        <a href="#tarifs" class="hover:text-amberLight">Tarifs Express & Cargo</a>
+        <a href="#procedure-fret" class="hover:text-amberLight">Avant d'expédier</a>
+        <a href="#sponsoring" class="hover:text-amberLight">Sponsoring & Prérequis</a>
       </nav>
 
       <div class="flex items-center gap-2 shrink-0">
-        <a href="#tarifs" class="px-3.5 sm:px-5 py-2 sm:py-2.5 rounded-xl bg-amberGold hover:bg-amberLight text-obsidian text-xs sm:text-sm font-bold transition shadow-md shadow-amberGold/20">
+        <a href="#tarifs" class="px-3.5 sm:px-5 py-2 sm:py-2.5 rounded-xl bg-amberGold text-obsidian text-xs sm:text-sm font-bold shadow-md shadow-amberGold/20">
           Tarifs
         </a>
         <!-- Bouton Menu Mobile -->
-        <button id="mobile-menu-btn" type="button" aria-label="Ouvrir le menu" class="lg:hidden p-2 rounded-xl bg-white/10 hover:bg-white/15 text-white border border-white/10">
+        <button id="mobile-menu-btn" type="button" aria-label="Ouvrir le menu" class="lg:hidden p-2 rounded-xl bg-white/10 text-white border border-white/10">
           <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16"></path>
           </svg>
@@ -139,10 +140,10 @@
         </div>
 
         <div class="flex flex-col sm:flex-row gap-3 sm:gap-4 pt-2">
-          <a href="#tarifs" class="w-full sm:w-auto text-center px-6 py-3.5 rounded-xl bg-amberGold hover:bg-amberLight text-obsidian text-sm font-extrabold transition shadow-lg shadow-amberGold/20">
+          <a href="#tarifs" class="w-full sm:w-auto text-center px-6 py-3.5 rounded-xl bg-amberGold text-obsidian text-sm font-extrabold shadow-lg shadow-amberGold/20">
             Consulter nos tarifs
           </a>
-          <a href="#sponsoring" class="w-full sm:w-auto text-center px-6 py-3.5 rounded-xl bg-white/10 hover:bg-white/15 text-white border border-white/15 text-sm font-semibold transition">
+          <a href="#sponsoring" class="w-full sm:w-auto text-center px-6 py-3.5 rounded-xl bg-white/10 text-white border border-white/15 text-sm font-semibold">
             Programme Sponsoring
           </a>
         </div>
@@ -369,7 +370,7 @@
       </div>
     </div>
 
-    <!-- Tableau comparatif par destination (Défilement horizontal fluide sur mobile) -->
+    <!-- Tableau comparatif par destination -->
     <div class="bg-white rounded-3xl border border-slate-200/80 shadow-lg overflow-hidden">
       <div class="bg-midnight text-white px-5 sm:px-7 py-4 sm:py-5 flex flex-col sm:flex-row sm:items-center justify-between gap-1.5">
         <h3 class="text-xs sm:text-sm font-extrabold uppercase tracking-wider">Grille détaillée par corridor vers Kinshasa</h3>
@@ -386,31 +387,31 @@
             </tr>
           </thead>
           <tbody class="divide-y divide-slate-100 text-slate-700">
-            <tr class="hover:bg-sand/60 transition">
+            <tr>
               <td class="py-3.5 px-5 sm:px-6 font-bold text-obsidian">Chine (Guangzhou / Yiwu) → Kinshasa</td>
               <td class="py-3.5 px-5 sm:px-6 font-extrabold text-obsidian">20 USD / kg <span class="block text-[11px] font-normal text-slate-500">45 000 CDF (+12$ si téléphone)</span></td>
               <td class="py-3.5 px-5 sm:px-6 font-extrabold text-amberGold">580 USD / CBM <span class="block text-[11px] font-normal text-slate-500">1 305 000 CDF</span></td>
               <td class="py-3.5 px-5 sm:px-6 text-xs">Départs chaque semaine • Dédouanement inclus</td>
             </tr>
-            <tr class="hover:bg-sand/60 transition">
+            <tr>
               <td class="py-3.5 px-5 sm:px-6 font-bold text-obsidian">Dubaï (Émirats Arabes Unis) → Kinshasa</td>
               <td class="py-3.5 px-5 sm:px-6 font-extrabold text-obsidian">18 USD / kg <span class="block text-[11px] font-normal text-slate-500">40 500 CDF (+12$ si téléphone)</span></td>
               <td class="py-3.5 px-5 sm:px-6 font-extrabold text-amberGold">550 USD / CBM <span class="block text-[11px] font-normal text-slate-500">1 237 500 CDF</span></td>
               <td class="py-3.5 px-5 sm:px-6 text-xs">Idéal téléphonie, informatique, parfums & pièces</td>
             </tr>
-            <tr class="hover:bg-sand/60 transition">
+            <tr>
               <td class="py-3.5 px-5 sm:px-6 font-bold text-obsidian">Belgique & France → Kinshasa</td>
               <td class="py-3.5 px-5 sm:px-6 font-extrabold text-obsidian">19 USD / kg <span class="block text-[11px] font-normal text-slate-500">42 750 CDF (+12$ si téléphone)</span></td>
               <td class="py-3.5 px-5 sm:px-6 font-extrabold text-amberGold">620 USD / CBM <span class="block text-[11px] font-normal text-slate-500">1 395 000 CDF</span></td>
               <td class="py-3.5 px-5 sm:px-6 text-xs">Dépôt entrepôt ou collecte Bruxelles / Paris</td>
             </tr>
-            <tr class="hover:bg-sand/60 transition">
+            <tr>
               <td class="py-3.5 px-5 sm:px-6 font-bold text-obsidian">Philippines & Singapour → Kinshasa</td>
               <td class="py-3.5 px-5 sm:px-6 font-extrabold text-obsidian">24 USD / kg <span class="block text-[11px] font-normal text-slate-500">54 000 CDF (+12$ si téléphone)</span></td>
               <td class="py-3.5 px-5 sm:px-6 font-extrabold text-amberGold">650 USD / CBM <span class="block text-[11px] font-normal text-slate-500">1 462 500 CDF</span></td>
               <td class="py-3.5 px-5 sm:px-6 text-xs">Sur réservation préalable</td>
             </tr>
-            <tr class="hover:bg-sand/60 transition">
+            <tr>
               <td class="py-3.5 px-5 sm:px-6 font-bold text-obsidian">Tunisie & Maroc → Kinshasa</td>
               <td class="py-3.5 px-5 sm:px-6 font-extrabold text-obsidian">21 USD / kg <span class="block text-[11px] font-normal text-slate-500">47 250 CDF (+12$ si téléphone)</span></td>
               <td class="py-3.5 px-5 sm:px-6 font-extrabold text-amberGold">600 USD / CBM <span class="block text-[11px] font-normal text-slate-500">1 350 000 CDF</span></td>
@@ -621,7 +622,7 @@
     </div>
   </footer>
 
-  <!-- Script léger pour le menu mobile -->
+  <!-- Script menu mobile -->
   <script>
     const menuBtn = document.getElementById('mobile-menu-btn');
     const mobileMenu = document.getElementById('mobile-menu');
