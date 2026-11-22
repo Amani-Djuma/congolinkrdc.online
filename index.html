@@ -49,10 +49,10 @@
     }
   </style>
 </head>
-<body class="bg-sand text-slate-800 antialiased overflow-x-hidden selection:bg-amberGold/25 selection:text-obsidian">
+<body class="bg-sand text-slate-800 antialiased overflow-x-hidden pt-[62px] sm:pt-[68px] selection:bg-amberGold/25 selection:text-obsidian">
 
-  <!-- Navigation principale statique -->
-  <header class="bg-obsidian border-b border-white/10 text-white">
+  <!-- Navigation principale FIXE (ne bouge jamais lors du défilement) -->
+  <header class="fixed top-0 left-0 right-0 z-50 bg-obsidian border-b border-white/10 text-white">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 py-3.5 flex items-center justify-between gap-3">
       <a href="#" class="flex items-center gap-2.5 sm:gap-3 min-w-0">
         <div class="w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-gradient-to-br from-amberGold to-amberLight text-obsidian font-extrabold flex items-center justify-center text-sm sm:text-base shadow-lg shadow-amberGold/20 shrink-0">
@@ -175,7 +175,7 @@
   </section>
 
   <!-- Section 1 : Grille Tarifaire Officielle + Images des Services -->
-  <section id="tarifs" class="max-w-7xl mx-auto px-4 sm:px-6 py-14 sm:py-20">
+  <section id="tarifs" class="scroll-mt-20 max-w-7xl mx-auto px-4 sm:px-6 py-14 sm:py-20">
     <div class="flex flex-col md:flex-row md:items-end justify-between mb-10 sm:mb-12 gap-3 sm:gap-4">
       <div>
         <span class="text-xs font-extrabold uppercase tracking-widest text-amberGold">Grille Tarifaire Officielle</span>
@@ -409,7 +409,7 @@
   </section>
 
   <!-- Section 2 : Ce que le client doit préparer avant d'expédier -->
-  <section id="procedure-fret" class="bg-white border-y border-slate-200/80 py-14 sm:py-20">
+  <section id="procedure-fret" class="scroll-mt-20 bg-white border-y border-slate-200/80 py-14 sm:py-20">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 space-y-8 sm:space-y-10">
       <div class="max-w-3xl">
         <span class="text-xs font-extrabold uppercase tracking-widest text-amberGold">Guide Pratique Fret</span>
@@ -460,7 +460,7 @@
   </section>
 
   <!-- Section 3 : Programme de Sponsoring + Prérequis -->
-  <section id="sponsoring" class="max-w-7xl mx-auto px-4 sm:px-6 py-14 sm:py-20 space-y-12 sm:space-y-16">
+  <section id="sponsoring" class="scroll-mt-20 max-w-7xl mx-auto px-4 sm:px-6 py-14 sm:py-20 space-y-12 sm:space-y-16">
     <div class="max-w-3xl">
       <span class="text-xs font-extrabold uppercase tracking-widest text-amberGold">Partenariat & Parrainage d'Entreprises</span>
       <h2 class="text-2xl sm:text-4xl font-extrabold text-obsidian mt-1">Programme Officiel de Sponsoring</h2>
